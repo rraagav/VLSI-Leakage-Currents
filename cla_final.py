@@ -4,8 +4,8 @@ import numpy as np
 import csv
 
 # Paths to leakage data files
-nmos_path = r"/Users/rishabhpatnaik/Documents/IIITH/Academic/THIRD YEAR/SEM1/COURSES/Digital VLSI Design/Project/Project 1/Eval3_Final/NMOS/Tables"
-pmos_path = r"/Users/rishabhpatnaik/Documents/IIITH/Academic/THIRD YEAR/SEM1/COURSES/Digital VLSI Design/Project/Project 1/Eval3_Final/PMOS/Tables"
+nmos_path = r"C:\Users\raaga\OneDrive\Desktop\Eval3_Final\Eval3_Final\NMOS\Tables"
+pmos_path = r"C:\Users\raaga\OneDrive\Desktop\Eval3_Final\Eval3_Final\PMOS\Tables"
 
 # Mapping of transistor types and states to corresponding text file paths
 leakage_data_files = {
