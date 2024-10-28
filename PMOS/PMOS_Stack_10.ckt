@@ -1,0 +1,63 @@
+*CONDUCTION NMOS W1
+
+.INCLUDE 45nm_MGK.pm
+.OPTIONS GMIN=1e-020 ABSTOL=1e-18 TEMP=85
+
+*Definizione dei parametri
+.PARAM Lmin=45n
+.PARAM Wmin=90n
+.PARAM Ldiff=45n
+.PARAM supply=1.1
+
+
+.GLOBAL gnd
+
+M1 drain1 gate1 source1 body1 pmos W={Wmin} L={Lmin} AS={Wmin*Ldiff} AD={Wmin*Ldiff} PS={2*(Ldiff+Wmin)} PD={2*(Ldiff+Wmin)}
+M2 drain2  gate2 source2 body2 pmos W={Wmin} L={Lmin} AS={Wmin*Ldiff} AD={Wmin*Ldiff} PS={2*(Ldiff+Wmin)} PD={2*(Ldiff+Wmin)}
+
+*NMOS Turned on
+Vs1 source1 gnd 1.1
+Vg1 gate1 gnd supply
+Vg2 gate2 gnd 0
+Vb1 body1 0 supply
+Vb2 body2 0 supply
+Vd2 drain2 gnd 0
+Vnet drain1 source2 0
+*Vdd alim 0 0
+
+
+.CONTROL
+*let voltage=0
+*let Vddbasic=1.1
+*while voltage le Vddbasic
+*  let voltage = voltage + 0.05
+*  alter sw = voltage
+dc Vs1 0 1.1 0.05
+echo V(drain1) V(gate1) V(source1) V(body1) I(Vnet) I(Vg1) I(Vs1) I(Vb1) V(drain2) V(gate2) V(source2) V(body2) I(Vd2) I(Vg2) I(Vnet) I(Vb2)  > PMOS_Stack_10_W1.txt
+let i=1
+while (i <= length(V(drain1)))
+    let Vdrain1 = V(drain1)[i]
+    let Vgate1 = V(gate1)[i]
+    let Vsource1 = V(source1)[i]
+    let Vbody1 = V(body1)[i]
+    let Id1 = I(Vnet)[i]
+    let Ig1 = I(Vg1)[i]
+    let Is1 = I(Vs1)[i]
+    let Ib1 = I(Vb1)[i]
+    let Vdrain2 = V(drain2)[i]
+    let Vgate2 = V(gate2)[i]
+    let Vsource2 = V(source2)[i]
+    let Vbody2 = V(body2)[i]
+    let Id2 = I(Vd2)[i]
+    let Ig2 = I(Vg2)[i]
+    let Is2 = I(Vnet)[i]
+    let Ib2 = I(Vb2)[i]
+    echo "$&Vdrain1 $&Vgate1 $&Vsource1 $&Vbody1 $&Id1 $&Ig1 $&Is1 $&Ib1 $&Vdrain2 $&Vgate2 $&Vsource2 $&Vbody2 $&Id2 $&Ig2 $&Is2 $&Ib2" >> PMOS_Stack_10_W1.txt
+    let i = i + 1
+end
+
+print V(drain1) V(gate1) V(source1) V(body1) I(Vnet) I(Vg1) I(Vs1) I(Vb1) V(drain2) V(gate2) V(source2) V(body2) I(Vd2) I(Vg2) I(Vnet) I(Vb2) 
+*end
+.ENDC
+
+.END
