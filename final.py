@@ -3,12 +3,10 @@ import pandas as pd
 import numpy as np
 import csv
 
-# Paths to leakage data files
-nmos_path = r"/Users/rishabhpatnaik/Documents/IIITH/Academic/THIRD YEAR/SEM1/COURSES/Digital VLSI Design/Project/Project 1/Eval3_Final/NMOS/Tables"
-pmos_path = r"/Users/rishabhpatnaik/Documents/IIITH/Academic/THIRD YEAR/SEM1/COURSES/Digital VLSI Design/Project/Project 1/Eval3_Final/PMOS/Tables"
+nmos_path = r"C:\Users\raaga\OneDrive\Desktop\Eval3_Final\Eval3_Final\NMOS\Tables"
+pmos_path = r"C:\Users\raaga\OneDrive\Desktop\Eval3_Final\Eval3_Final\PMOS\Tables"
 
-# Base directory for subcircuit files and output folder
-base_dir = r"/Users/rishabhpatnaik/Documents/IIITH/Academic/THIRD YEAR/SEM1/COURSES/Digital VLSI Design/Project/Project 1/Eval3/ngspice"
+base_dir = r"C:\Users\raaga\OneDrive\Desktop\Eval3_Final\Eval3_Final\ngspice"
 template_file = os.path.join(base_dir, 'CLA_adder.sub')
 output_folder = os.path.join(base_dir, 'writings')
 
