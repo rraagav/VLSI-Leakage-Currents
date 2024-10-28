@@ -1,2 +1,2 @@
 # VLSI-Leakage-Currents
-Obtaining the Leakage currents for a Carry Lookahead Adder, from nmos and pmos stacks in different states of operation.
+In this Project, I determined the leakage currents for NMOS and PMOS, when they're on and off in isolation, and when they operate in different states when stacked.
